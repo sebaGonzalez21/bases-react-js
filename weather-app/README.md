@@ -72,6 +72,12 @@ https://stackoverflow.com/questions/43921023/visual-studio-code-jsx-in-js-format
 
 ## Plugins
 Reactjs code snippets
+react plugin for chrome
+Eslint para verificar errores
+https://eslint.org/
+
+## Formato de letras
+https://fonts.google.com/
 
 ## Weather icons
 https://erikflowers.github.io/weather-icons/
@@ -79,3 +85,16 @@ https://erikflowers.github.io/weather-icons/
 ## Css para simular 
 https://www.cssmatic.com/
 https://css-tricks.com/
+
+## transformar grados cel
+yarn add convert-units
+
+## Patron de diseño
++ Google material design
+https://material.io/design
+
++ diseno yarn add @material-ui/core trabaja con roboto y el viewport
+https://material-ui.com/
+
++ iconos
+yarn add @material-ui/icons
