@@ -1,0 +1,14 @@
+.locationList{
+	background: red;
+}
+/*
+cuando se llegue una medida estimada se modifica el cambio
+medida del flexbox cuando sea una pantalla pequeña
+*/
+@media(max-width: 64em){
+	.locationList{
+		max-height: 30vh;
+		overflow: auto;
+		margin-bottom: 20px;
+	}
+}

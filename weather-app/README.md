@@ -85,9 +85,16 @@ https://erikflowers.github.io/weather-icons/
 ## Css para simular 
 https://www.cssmatic.com/
 https://css-tricks.com/
+https://roylee0704.github.io/react-flexbox-grid/
 
 ## transformar grados cel
 yarn add convert-units
+
+## Bootstrap
++ https://react-bootstrap.github.io/
+
+## Cursor
++ https://alligator.io/css/cursor-property/
 
 ## Patron de diseño
 + Google material design

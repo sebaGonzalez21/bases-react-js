@@ -1,9 +1,26 @@
 import React from 'react';
 import WeatherIcons from 'react-weathericons';
 import PropTypes from 'prop-types';//validacion de los tipos de objetos
-import icons from '../../utils/constant';
 //importar css
 import './styles.css'
+import {
+	CLOUDY,
+	SUN,
+	SNOW,
+	RAIN,
+	THUNDER,
+	DRIZZLE
+} from '../../utils/weather';
+
+const icons = {
+	[CLOUDY]: "cloud",
+	[SUN]: "day-sunny",
+	[SNOW]: "snow",
+	[RAIN]: "rain",
+	[THUNDER]: "day-thunderstorm",
+	[DRIZZLE]: "day-showers"
+}
+
 const getWeatherIcon = (wheatherState) =>{
 	let icon = icons[wheatherState];
 	const sizeIcon = "4x";

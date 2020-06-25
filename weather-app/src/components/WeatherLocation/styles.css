@@ -5,15 +5,22 @@
 	padding-left: 10px;
 	color: #888;
 	line-height: 35px;
+	overflow: hidden;
 }
 
 .locationCont h1{
 	margin: 0;
+	white-space: nowrap;/*no se quiebre el titulo*/
 }
 
 .weatherLocationCont{
-	width: 400px;
+	width: calc(100% - 20px);
+	margin-left: 10px;
+	margin-right: 10px;
+	min-width: 350px;
 	padding: 25px;
+	box-sizing: border-box;
 	font-family: 'Roboto', sans-serif;
 	box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.75);
+	cursor: pointer;
 }

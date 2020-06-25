@@ -21,7 +21,6 @@ class WeatherLocation extends Component {
 	//states, estado de componentes tipo clase se ejecuta primero
 	constructor(props){
 		super(props);//desde donde extiende el componente
-
 		const {city} = props;
 
 		//estado parcial del componente para ayudar a que se renderice
@@ -29,31 +28,31 @@ class WeatherLocation extends Component {
 			city,
 			data: null
 		}
-		console.log("constructor");
+		//console.log("constructor");
 	}
 	
 	//al final para ir a buscar data al servidor al iniciar el servicio
 	componentDidMount(){
-		console.log("componentDidMount");
+		//console.log("componentDidMount");
 		this.handleUpdateClick();
 	}
-
+	/*
 	//ciclo de actualizacion se ejecuta solo cuando se actualiza
 	componentDidUpdate(prevProps, prevState) {
-		console.log("componentDidUpdate");
+		//console.log("componentDidUpdate");
 		
 	}
 	
 	//se ejecuta de los segundos obsoleto,cuando aun no se renderiza
 	componentWillMount(){
-		console.log("componentWillMount");
+		//console.log("componentWillMount");
 	}
 
 	//
 	componentWillUpdate(){
-		console.log("componentWillUpdate");
+		//console.log("componentWillUpdate");
 		
-	}
+	}*/
 
 	handleUpdateClick = () =>{
 		//pending //resolve //reject
@@ -62,7 +61,6 @@ class WeatherLocation extends Component {
 			return resolve.json();
 		}).then(data=>{
 			const newWeather = transformWeather(data);
-			console.log("resultado handleUpdateClick; ",newWeather)
 			this.setState({
 				data: newWeather
 			});
@@ -81,14 +79,13 @@ class WeatherLocation extends Component {
 	};
 	//penultimo resultado en el dom
 	render(){
-
-		console.log("render");
+		const {onWeatherLocationClick} = this.props;
 		//dentro del render llamada de objetos
 		const {city,data } = this.state;
 
 		// no renderizar si no tengo data
 		return (
-			<div className="weatherLocationCont">
+			<div className="weatherLocationCont" onClick={onWeatherLocationClick}>
 				<Location city={city}></Location>
 				{data ? 
 					<WeatherData data={data}></WeatherData> :
@@ -101,6 +98,7 @@ class WeatherLocation extends Component {
 
 WeatherLocation.propTypes = {
 	city: PropTypes.string.isRequired,
+	onWeatherLocationClick: PropTypes.func
 }
 
 export default WeatherLocation;//el componente se indica que estara disponible para invocarlo

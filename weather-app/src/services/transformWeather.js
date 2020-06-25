@@ -1,12 +1,34 @@
 import convert from 'convert-units';
-import icons from '../utils/constant';
+import {
+	CLOUDY,
+	SUN,
+	SNOW,
+	RAIN,
+	THUNDER,
+	DRIZZLE
+} from '../utils/weather';
 
 	const getTemp = (kelvin)=>{
-		return Number(convert(kelvin).from("K").to("C").toFixed(2));
+		return Number(convert(kelvin).from("K").to("C").toFixed(0));
 	}
 
-	const getWeatherState = (weather_data) =>{
-		return icons.sun;
+	const getWeatherState = (weather) =>{
+		const {id} = weather;
+		if(id<300){
+			return THUNDER;
+		}else if(id<400){
+			return DRIZZLE;
+		}
+		else if(id<600){
+			return RAIN;
+		}
+		else if(id<700){
+			return SNOW;
+		}else if(id === 800){
+			return SUN;
+		}else{
+			return CLOUDY;
+		}
 	}
 	
 	//utilizar this para llamarlo
@@ -14,7 +36,7 @@ import icons from '../utils/constant';
 		//object literal property
 		const {humidity,temp} = Weather_data.main;
 		const {speed} = Weather_data.wind;
-		const weatherState = getWeatherState(Weather_data);
+		const weatherState = getWeatherState(Weather_data.weather[0]);
 		const temperature =getTemp(temp);
 		const data = {
 			temperature,
