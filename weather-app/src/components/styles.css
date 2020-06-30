@@ -1,5 +1,14 @@
 .locationList{
-	background: red;
+}
+
+.forecast-loading{
+	padding-left: 15px;
+	color: yellow;
+}
+
+.forecast-item{
+	padding-left: 15px;
+	color: white;
 }
 /*
 cuando se llegue una medida estimada se modifica el cambio
@@ -11,4 +20,11 @@ medida del flexbox cuando sea una pantalla pequeña
 		overflow: auto;
 		margin-bottom: 20px;
 	}
+}
+
+.forecast-title{
+ color: white;
+ text-align: center;
+ padding-top: 15px;
+ padding-bottom: 15px;
 }

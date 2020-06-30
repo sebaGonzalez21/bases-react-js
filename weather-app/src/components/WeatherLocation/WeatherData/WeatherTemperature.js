@@ -10,7 +10,7 @@ import {
 	RAIN,
 	THUNDER,
 	DRIZZLE
-} from '../../utils/weather';
+} from '../../../utils/weather';
 
 const icons = {
 	[CLOUDY]: "cloud",

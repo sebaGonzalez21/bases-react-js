@@ -1,6 +1,6 @@
 import React,{Component} from 'react'; //importar react para trabajar con react dentro del archivo
 import Location from './Location';
-import WeatherData from '../WeatherData';
+import WeatherData from './WeatherData';
 import { CircularProgress } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import './styles.css'
