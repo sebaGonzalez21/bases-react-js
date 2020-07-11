@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
-import getUrlForecastByCity from '../../services/getUrlForecastByCity'
+import getUrlForecastByCity from '../../services/getUrlForecastByCity';
+import transformForecast from '../../services/transformForecast';
 import ForeCastItem from '../ForeCastItem/index';
-import WeatherData from './WeatherData';
 /*
 const days =[
 	'Lunes',
@@ -30,15 +30,33 @@ class ForecastExtended extends Component{
 		}
 	}
 
+	//la primera vez consume el servicio ese componente con informacion
 	componentDidMount(){
+		this.updateCity(this.props.city);
+	}
+
+	//actualiza cuando se le pasan propiedades, punto previo al establecimiento de propiedades y actualizacion de componentes
+	//se utiliza para actualizar el componente y hacer algun en concecuencia
+	//se ejecuta siempre que se modifican, ecepto la primera vez, por eso es necesario ejecutarlo en component did mount
+	componentWillReceiveProps(nextProps){
+		if(nextProps.city !== this.props.city){
+			this.setState({forecastData: null});
+			this.updateCity(nextProps.city);
+		}
+	}
+
+	updateCity = (city) =>{
 		const urlForecast = getUrlForecastByCity(this.props.city);
-		
+		//
 		fetch(urlForecast)
 		.then( data => data.json())
 		.then(weather_data=>{
-			console.log(weather_data)
+			console.log(weather_data);
+			console.log("");
+			const forecastData = transformForecast(weather_data);
+			console.log(forecastData);
 			this.setState({
-				forecastData: weather_data
+				forecastData: forecastData
 			})
 		})
 		.catch(err=>{
@@ -47,11 +65,15 @@ class ForecastExtended extends Component{
 		});
 	}
 
-	renderForeCastItemDays(){
-		return "render items";
-		/*return days.map(day => 
-			(<ForeCastItem key={day} weekDay={day} hour={10} data={data}></ForeCastItem>)
-		)**/
+	renderForeCastItemDays(forecastData){
+		return forecastData.map(forecast =>
+			(<ForeCastItem  
+				key={`${forecast.weekDay}${forecast.hour}`}
+				weekDay={forecast.weekDay}
+				hour={forecast.hour} 
+				data={forecast.data}>
+			 </ForeCastItem>)
+		)
 	}
 
 	renderProgress(){
@@ -65,7 +87,8 @@ class ForecastExtended extends Component{
 	const {forecastData} = this.state;
 	return (<div>
 			<h2 className="forecast-title">Prónostico extendido para la ciudad: {city}</h2>
-			{forecastData ? this.renderForeCastItemDays(): this.renderProgress()}
+			{forecastData ? this.renderForeCastItemDays(forecastData):
+			 this.renderProgress()}
 		</div>);
 	}
 }

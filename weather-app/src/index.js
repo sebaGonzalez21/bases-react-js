@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';//espera una propiedad store, provee al store los componentes que viven en la app
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import {store} from './store';//redux abstrae utilizacion del store
+//ya funciona react redux junto con la aplicacion,
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

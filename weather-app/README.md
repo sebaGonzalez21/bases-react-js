@@ -68,40 +68,71 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 ### Error de formateo en visual studio code
-https://stackoverflow.com/questions/43921023/visual-studio-code-jsx-in-js-formatting-poorly-on-save
+```
+[Error react Visual Studio Code](https://stackoverflow.com/questions/43921023/visual-studio-code-jsx-in-js-formatting-poorly-on-save)
+```
 
 ## Plugins
 Reactjs code snippets
 react plugin for chrome
 Eslint para verificar errores
+```
 https://eslint.org/
-
+```
 ## Formato de letras
+```
 https://fonts.google.com/
+```
 
 ## Weather icons
+```
 https://erikflowers.github.io/weather-icons/
-
+```
 ## Css para simular 
+```
 https://www.cssmatic.com/
 https://css-tricks.com/
 https://roylee0704.github.io/react-flexbox-grid/
-
+```
 ## transformar grados cel
+```
 yarn add convert-units
-
+```
 ## Bootstrap
-+ https://react-bootstrap.github.io/
+```
+https://react-bootstrap.github.io/
+```
 
 ## Cursor
-+ https://alligator.io/css/cursor-property/
+```
+https://alligator.io/css/cursor-property/
+```
 
 ## Patron de diseño
 + Google material design
+```
 https://material.io/design
+```
 
 + diseno yarn add @material-ui/core trabaja con roboto y el viewport
+```
 https://material-ui.com/
-
+```
 + iconos
+```
 yarn add @material-ui/icons
+```
+
+## Utilizacion de Redux
+Core de redux independiente de react,pensado para utilizar javascript plano, angular u otro framework
+```
+yarn add redux
+```
+Vinculacion entre los 2 frameworks
+```
+yarn add react-redux
+```
+Agregar extension de redux en chrome para verificar los estados paso a paso.
++ Redux Devtools
+
+

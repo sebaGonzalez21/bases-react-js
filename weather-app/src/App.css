@@ -63,7 +63,15 @@
 }
 
 .detail{
-  background-color: gray;
-  height: 100vh;
+  background-color: #999;
+  height: 85vh;
   width: 100%;
+  overflow: auto;
 }
+
+@media(max-width: 64em){
+  .detail{
+    height: 50vh;
+  }
+}
+

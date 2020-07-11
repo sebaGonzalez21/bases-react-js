@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import LocationList from './components/WeatherLocation/LocationList';
+import LocationListContainer from './containers/LocationListContainer';
 import ForecastExtended from './components/WeatherLocation/ForecastExtended'
 import { Paper,AppBar,Typography,Toolbar } from '@material-ui/core';//sombra,BarraNavegacion,manejarTipografia,
 import { Grid, Row, Col } from 'react-flexbox-grid';
@@ -13,6 +13,11 @@ const cities = [
   "Lima,pe"
 ];
 
+/*
+const setCity = (value)=>({
+    type: 'setCity', value
+
+});*/
 
 class App extends React.Component {
 
@@ -24,13 +29,6 @@ class App extends React.Component {
     this.state = {city: null};
   }
 
-
-  handleSelectionLocation = city =>{
-    console.log("handleSelectionLocation",city);
-    this.setState({
-      city
-    })
-  }
 
   render(){
     const {city} = this.state;
@@ -47,8 +45,7 @@ class App extends React.Component {
         </Row>
         <Row>
           <Col xs={12} md={6}>
-            <LocationList cities={cities}
-            onSelectedLocation={this.handleSelectionLocation} />
+            <LocationListContainer cities={cities} />
           </Col>
           <Col xs={12} md={6}>
             <Paper elevation={4}>
@@ -97,4 +94,8 @@ class App extends React.Component {
   }
 };
 
-export default App;
+
+//connect recibe 2 funciones,espera que se le pase el componente, se retorna el componente con habilidad de conectarse, componente mejorado con las propiedades
+export default (App);
+
+
