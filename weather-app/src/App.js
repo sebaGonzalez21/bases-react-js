@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import LocationListContainer from './containers/LocationListContainer';
-import ForecastExtended from './components/WeatherLocation/ForecastExtended'
+import ForecastExtendedContainer from './containers/ForecastExtendedContainer';
 import { Paper,AppBar,Typography,Toolbar } from '@material-ui/core';//sombra,BarraNavegacion,manejarTipografia,
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
@@ -22,16 +22,15 @@ const setCity = (value)=>({
 class App extends React.Component {
 
   //manejo de estados
-  //
+  /*
   constructor(){
     super();
     //constructor del componente siempre
     this.state = {city: null};
-  }
-
+  }*/
 
   render(){
-    const {city} = this.state;
+    //const {city} = this.state;
     return (
       <Grid>
         <Row>
@@ -50,9 +49,10 @@ class App extends React.Component {
           <Col xs={12} md={6}>
             <Paper elevation={4}>
               <div className="detail">
-                { city && 
-                  <ForecastExtended city={city}/>
+                { /*city && 
+                  <ForecastExtendedContainer/>*/
                 }
+                <ForecastExtendedContainer/>
               </div>
             </Paper>
           </Col>

@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';//espera una propiedad store, provee al sto
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {store} from './store';//redux abstrae utilizacion del store
+import {store} from './stores';//redux abstrae utilizacion del store
 //ya funciona react redux junto con la aplicacion,
 ReactDOM.render(
   <React.StrictMode>

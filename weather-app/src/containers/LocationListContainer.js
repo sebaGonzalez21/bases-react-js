@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';//conectar lote de librerias react y redux, funcion que espera como parametros 2 funciones
 import  PropTypes from 'prop-types';
-import {setCity} from '../actions';
-import LocationList from './../components/WeatherLocation/LocationList';
+import {setSelectedCity} from '../actions';
+import LocationList from './../components/LocationList';
 
 class LocationListContainer extends Component{
 
@@ -22,13 +22,13 @@ class LocationListContainer extends Component{
 
 
 LocationListContainer.propTypes ={
-	cities: PropTypes.string.isRequired,
+	cities: PropTypes.array.isRequired,
 	setCity: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => (
 	{
-	  setCity: value => dispatch(setCity(value))
+	  setCity: value => dispatch(setSelectedCity(value))
 	}
   );
   

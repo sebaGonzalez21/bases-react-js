@@ -135,4 +135,7 @@ yarn add react-redux
 Agregar extension de redux en chrome para verificar los estados paso a paso.
 + Redux Devtools
 
-
+Redux thunk(Middleware)
+```
+yarn add redux-thunk
+```
