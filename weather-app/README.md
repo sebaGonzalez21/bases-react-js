@@ -139,3 +139,17 @@ Redux thunk(Middleware)
 ```
 yarn add redux-thunk
 ```
+
+Libreria para grandes componentes de datos
+
+```
+yarn add reselect
+```
+
+Lodash manipulacion de lenguajes, utilizacion
+de filters y map reduce.
+
+```
+https://lodash.com/docs/4.17.15
+yarn add lodash.topairs
+```

@@ -1,11 +1,11 @@
-import React,{Component} from 'react'; //importar react para trabajar con react dentro del archivo
+import React from 'react'; //importar react para trabajar con react dentro del archivo
 import Location from './Location';
 import WeatherData from './WeatherData';
 import { CircularProgress } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import './styles.css'
-import transformWeather from '../../services/transformWeather';
-import getUrlWeatherByCity from '../../services/getUrlWeatherByCity';
+//import transformWeather from '../../services/transformWeather';
+//import getUrlWeatherByCity from '../../services/getUrlWeatherByCity';
 /*
 const data2 = {
 	temperature: 15,
@@ -17,7 +17,8 @@ const data2 = {
 
 //componente de tipo clase
 //cuando se necesita utilizar alguna instancia es necesario utilizarlo
-class WeatherLocation extends Component {
+const WeatherLocation = ({onWeatherLocationClick,city,data} ) => (
+	/*
 	//states, estado de componentes tipo clase se ejecuta primero
 	constructor(props){
 		super(props);//desde donde extiende el componente
@@ -52,7 +53,7 @@ class WeatherLocation extends Component {
 	componentWillUpdate(){
 		//console.log("componentWillUpdate");
 		
-	}*/
+	}
 
 	handleUpdateClick = () =>{
 		//pending //resolve //reject
@@ -76,30 +77,36 @@ class WeatherLocation extends Component {
 		this.setState({
 			city: "Santiago!",
 			data: data
-		});*/
-	};
+		});
+	};*/
+	
 	//penultimo resultado en el dom
-	render(){
-		const {onWeatherLocationClick} = this.props;
+	//render = () =>{
+		//const {onWeatherLocationClick,city,data}  = this.props;
 		//dentro del render llamada de objetos
-		const {city,data } = this.state;
+		//const {city,data } = this.state;
 
 		// no renderizar si no tengo data
-		return (
-			<div className="weatherLocationCont" onClick={onWeatherLocationClick}>
+		//return ();
+		<div className="weatherLocationCont" onClick={onWeatherLocationClick}>
 				<Location city={city}></Location>
 				{data ? 
 					<WeatherData data={data}></WeatherData> :
 				    <CircularProgress />}
 				{/*<button onClick={this.handleUpdateClick}>Actualizar</button> */}
 			</div>
-		);
-	}
-}
+	//}
+);
 
 WeatherLocation.propTypes = {
 	city: PropTypes.string.isRequired,
-	onWeatherLocationClick: PropTypes.func
+	onWeatherLocationClick: PropTypes.func,
+	data: PropTypes.shape({
+		temperature: PropTypes.number.isRequired,
+		weatherState: PropTypes.string.isRequired,
+		humidity: PropTypes.number.isRequired,
+		wind: PropTypes.string.isRequired,
+	})
 }
 
 export default WeatherLocation;//el componente se indica que estara disponible para invocarlo

@@ -1,7 +1,9 @@
-import {apiKey,urlBaseForecast} from '../utils/apiUrl';
+import {apiKey,urlBaseForecast,urlBaseWeather} from '../utils/apiUrl';
 
-const getUrlForecastByCity = city =>{
+export const getUrlForecastByCity = city =>{
 	return  `${urlBaseForecast}?q=${city}&appid=${apiKey}`;
 };
 
-export default getUrlForecastByCity;
+export const getUrlBaseWeather = city =>{
+	return  `${urlBaseWeather}?q=${city}&appid=${apiKey}`;
+};
