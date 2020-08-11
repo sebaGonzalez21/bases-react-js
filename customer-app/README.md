@@ -74,3 +74,13 @@ Pensada en utilizacion de dispositivos react native
 yarn add react-router-dom
 ```
 
+## Redux and React redux(Manejo de estado y peticiones Fetch)
+```
++ yarn add redux
++ yarn add react-redux
+```
+## Actions creators conspactos y no repetitivos
+
+```
++ yarn add redux-actions
+```
