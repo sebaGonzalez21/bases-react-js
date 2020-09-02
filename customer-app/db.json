@@ -1,0 +1,36 @@
+{
+  "customers": [
+    {
+      "dni": "18886324-3",
+      "name": "Sebas Perez",
+      "age": 38	
+    },
+    {
+      "dni": "18584334-3",
+      "name": "Isaias Gonzalez",
+      "age": 22	
+    },
+    {
+      "dni": "20886324-3",
+      "name": "Manuel Figueroa",
+      "age": 28	
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

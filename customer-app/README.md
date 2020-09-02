@@ -84,3 +84,11 @@ yarn add react-router-dom
 ```
 + yarn add redux-actions
 ```
+
+## Test rest 
+
+```
++ npm install -g json-server 
++ json-server --watch db.json --port 3001
++ https://github.com/typicode/json-server
+```
