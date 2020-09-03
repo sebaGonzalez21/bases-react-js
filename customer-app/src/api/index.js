@@ -1,0 +1,1 @@
+export const apiGet = (url) => () => fetch(url).then(c => c.json());

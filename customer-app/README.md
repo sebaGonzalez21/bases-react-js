@@ -92,3 +92,14 @@ yarn add react-router-dom
 + json-server --watch db.json --port 3001
 + https://github.com/typicode/json-server
 ```
+
+## Redux promise 
+
+```
++ yarn add redux-promise
+```
+
+## Reselect para manejo de estados
+```
++ yarn add reselect
+```

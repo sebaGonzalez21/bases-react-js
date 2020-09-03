@@ -3,5 +3,5 @@ import { FETCH_CUSTOMERS } from '../utils/constants';
 
 //espera un objeto con distintas constantes
 export const customers = handleActions({
-	[FETCH_CUSTOMERS]: (state,action)=>[...action.payload]
+	[FETCH_CUSTOMERS]: (state,action)=>[...action.payload],
 }, []);
