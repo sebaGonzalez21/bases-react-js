@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const CustomerEdit = ({name,dni,age}) => {
 	return (
 		<div>
-			<h2>Editción del cliente</h2>
+			<h2>Edición del cliente</h2>
 			<h3>Nombre: {name} / Dni: {dni} / Edad: {age}</h3>
 		</div>
 	);
