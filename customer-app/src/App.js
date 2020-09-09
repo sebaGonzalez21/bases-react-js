@@ -5,6 +5,7 @@ import {BrowserRouter as Router,Route,Switch } from 'react-router-dom'; //manejo
 import HomeContainer from './containers/HomeContainer';
 import CustomersContainer from './containers/CustomersContainer';
 import CustomerContainer from './containers/CustomerContainer';
+import NewCustomerContainer from './containers/NewCustomerContainer';
 
 //exact nos entrega la url sin repetirlos
 //new lo interpreta como otra url componente exact no sirve para url similares
@@ -12,7 +13,7 @@ import CustomerContainer from './containers/CustomerContainer';
 function App() {
 
   //const renderHome = () => (<h1>Home</h1>);
-  const renderCustomerNewContainer = () => (<h1>Customer New Container</h1>);
+  //const renderCustomerNewContainer = () => (<h1>Customer New Container</h1>);
 
   //render envia parametros
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route exact path="/" component={HomeContainer}/>
         <Route exact path="/customers" component={CustomersContainer}/>
         <Switch>
-          <Route path="/customers/new" component={renderCustomerNewContainer}/>
+          <Route path="/customers/new" component={NewCustomerContainer}/>
           <Route path="/customers/:dni" render={props => <CustomerContainer dni={props.match.params.dni} />}/>
         </Switch>
       </div>

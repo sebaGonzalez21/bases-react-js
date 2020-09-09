@@ -103,3 +103,9 @@ yarn add react-router-dom
 ```
 + yarn add reselect
 ```
+
+## Redux form
+```
++ https://redux-form.com/8.3.0/
++ yarn add redux-form
+```
