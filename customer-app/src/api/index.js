@@ -8,7 +8,7 @@ export const apiPut = (url,id,customer) => () => fetch(`${url}/${id}`,
 }).then(v => v.json())
 .then(r =>{
 	if(r.error){
-		return Promise.reject(r.validation);		
+		return ({error: r.validation});
 	}
 
 	return r;
@@ -22,7 +22,7 @@ export const apiPost = (url,customer) => () => fetch(url,
 }).then(v => v.json())
 .then(r =>{
 	if(r.error){
-		return Promise.reject(r.validation);		
+		return ({error: r.validation});
 	}
 
 	return r;

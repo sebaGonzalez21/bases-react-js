@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ Component } from 'react';
 import PropTypes from 'prop-types';
 import {reduxForm,Field} from 'redux-form';//genera acciones por medio de action creators
 import CustomerActions from './CustomersActions';
@@ -49,11 +49,22 @@ const MyField = ({input,meta,type,label,name}) => (
 	</div>
 );
 
-const CustomerEdit = ({name,dni,age,handleSubmit,submitting,onBack,pristine,submitSucceded}) => {
+class CustomerEdit extends Component {
 
-	return (
-		<div>
+	componentDidMount(){
+		if(this.cuadroTexto){
+			this.cuadroTexto.focus();
+		}
+	}
+
+	render() {
+		const {handleSubmit,submitting,onBack,pristine,submitSucceded} = this.props;
+
+
+		return (
+			<div>
 			<h2>Edición del cliente</h2>
+			Nuevo cuadro de texto <input type="text" ref={ txt=> this.cuadroTexto = txt} />
 			<form onSubmit={handleSubmit}>
 					<Field 
 						name="name" 
@@ -89,8 +100,9 @@ const CustomerEdit = ({name,dni,age,handleSubmit,submitting,onBack,pristine,subm
 					message="Se perderan los datos si continua"></Prompt>
 
 			</form>
-		</div>
-	);
+			</div>
+		);
+	}
 };
 
 CustomerEdit.propTypes = {

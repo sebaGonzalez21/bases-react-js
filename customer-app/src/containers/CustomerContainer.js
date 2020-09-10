@@ -24,9 +24,9 @@ class CustomerContainer extends Component {
 		console.log(JSON.stringify(values));
 		const {id} = values;
 		return this.props.updateCustomer(id,values).then(r=>{
-			if(r.error){
-				throw new SubmissionError(r.payload);
-			}
+			if (r.payload && r.payload.error) {
+                throw new SubmissionError(r.payload.error);
+            }
 		});//promise submitting para desabilitar el boton
 	}
 

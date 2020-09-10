@@ -12,9 +12,9 @@ class NewCustomerContainer extends Component {
 
 	handleSubmit = (values) =>{
 		return this.props.insertCustomer(values).then(r=>{
-			if(r.error){
-				throw new SubmissionError(r.payload);
-			}
+			if (r.payload && r.payload.error) {
+                throw new SubmissionError(r.payload.error);
+            }
 		});//promise submitting para desabilitar el boton;
 	}
 
