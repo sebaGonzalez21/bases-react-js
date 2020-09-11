@@ -1,5 +1,5 @@
 import {handleActions} from 'redux-actions';//manejar mediante acciones los reducers
-import { FETCH_CUSTOMERS, INSERT_CUSTOMERS,UPDATE_CUSTOMERS } from '../utils/constants';
+import { DELETE_CUSTOMER, FETCH_CUSTOMERS, INSERT_CUSTOMERS,UPDATE_CUSTOMERS } from '../utils/constants';
 
 //espera un objeto con distintas constantes
 export const customers = handleActions({
@@ -26,5 +26,6 @@ export const customers = handleActions({
 			}
 		},initialValue);
 		return newCustomers;
-	}
+	},
+	[DELETE_CUSTOMER]: (state,action) => state.filter(c=> c.id !== action.payload)
 }, []);

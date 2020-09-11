@@ -5,6 +5,8 @@ import CustomerActions from './CustomersActions';
 //import { connect } from 'react-redux'; //react-redux connect
 import { setPropsAsInitial } from '../helpers/setPropsAsInitial';
 import { Prompt } from 'react-router-dom';
+import { accessControl } from '../helpers/accessControl';
+import { CUSTOMER_EDIT } from '../utils/permissions';
 
 /*
 const isRequired = value =>(
@@ -38,24 +40,29 @@ const isNumber = value => (
 	isNaN(Number(value)) && "El campo debe ser numerico"
 );
 
-const MyField = ({input,meta,type,label,name}) => (
-	<div>
-		<label htmlFor={name} >{label}</label>
-		<input {...input} type={!type ? "text": type}/>
-		{
-			meta.touched && meta.error && <span>{meta.error}</span>
-		}
-		
-	</div>
-);
+
 
 class CustomerEdit extends Component {
 
 	componentDidMount(){
-		if(this.cuadroTexto){
-			this.cuadroTexto.focus();
+		//componentes no controlados
+		if(this.txt){
+			this.txt.focus();
 		}
 	}
+
+	renderField = ({input,meta,type,label,name,withFocus}) => (
+		<div>
+			<label htmlFor={name} >{label}</label>
+			<input {...input}
+			 	type={!type ? "text": type}
+				ref={withFocus && (txt => this.txt= txt) }/>
+			{
+				meta.touched && meta.error && <span>{meta.error}</span>
+			}
+			
+		</div>
+	);
 
 	render() {
 		const {handleSubmit,submitting,onBack,pristine,submitSucceded} = this.props;
@@ -64,26 +71,26 @@ class CustomerEdit extends Component {
 		return (
 			<div>
 			<h2>Edición del cliente</h2>
-			Nuevo cuadro de texto <input type="text" ref={ txt=> this.cuadroTexto = txt} />
 			<form onSubmit={handleSubmit}>
-					<Field 
+					<Field
+						withFocus 
 						name="name" 
-						component={MyField} 
+						component={this.renderField} 
 						type="text" 
 						placeholder="nombre"
 						parse={toUpper}
 						format={toLower}
 						label={"Nombre"}></Field>
 				
-					<Field 
+					<Field
 						name="dni" 
-						component={MyField} 
+						component={this.renderField} 
 						type="text"
 						placeholder="dni"
 						label={"Dni"}></Field>
 					
 					<Field name="age" 
-					component={MyField}  
+					component={this.renderField}  
 					type="number"
 					validate={[isNumber]} 
 					placeholder="edad"
@@ -123,4 +130,4 @@ export default connect((state,props) => (
 				{ initialValues: props }
 				))(CustomerEditForm);*/
 
-export default setPropsAsInitial(CustomerEditForm);
+export default accessControl([CUSTOMER_EDIT])(setPropsAsInitial(CustomerEditForm));
