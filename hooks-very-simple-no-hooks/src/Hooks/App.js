@@ -1,24 +1,20 @@
-import React, {Component} from 'react';
+import React,{ useState } from 'react';//hooks siempre empiezan con use
 import Seconds from './Seconds';
 
 
+const App = () => {
+	//estado inicial
+	//const {setShowTimer} = this;//utilizar hook
+	//const {showTimer} = this.state;//utilizar hook
+	//useState => estado / funcion que modifica el estado
+	//array destructuring
+	//primer nombre de variable y estado, 
+	const [showTimer, setShowTimer] = useState(false);
+	
 
-class App extends Component {
-
-    state = {
-        showTimer: false
-    };
-
-    setShowTimer = showTimer => {
-        this.setState({showTimer})
-    }
-
-    render() {
-        const {setShowTimer} = this;
-        const {showTimer} = this.state;
         return (
           <div className="App">
-            <h1>Aprender hooks</h1>    
+            <h1>Aprender Hooks Version</h1>    
             <button onClick={() => setShowTimer(!showTimer)}>
                 {!showTimer
                     ? 'Activar cronómetro'
@@ -37,8 +33,8 @@ class App extends Component {
                 )
             }
           </div>
-        );
-    }
+    );
+	
 }
 
 export default App;
