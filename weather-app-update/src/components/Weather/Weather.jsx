@@ -10,6 +10,14 @@ import { WiCloud,
 import {IconContext} from 'react-icons';
 
 
+const validValues = [
+	"cloud",
+	"cloudy",
+	"fog",
+	"sunny",
+	"rain"
+]
+
 const stateByName = {
 	cloud: WiCloud,
 	cloudy: WiDayCloudy,
@@ -37,7 +45,7 @@ const Weather = ({temperature,state}) => {
 
 Weather.propTypes = {
 	temperature: PropTypes.number.isRequired,
-	state: PropTypes.string.isRequired
+	state: PropTypes.oneOf(validValues).isRequired
 }
 
 export default Weather

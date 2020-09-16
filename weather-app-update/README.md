@@ -67,6 +67,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
+## Icons
++  npm install react-icons
+
 ### StoryBook
 
 Sandboxing que permite probar el componente sin aun haberlo integrado a la app
@@ -83,3 +86,7 @@ Sandboxing que permite probar el componente sin aun haberlo integrado a la app
 
 ## Test babel core
 +  npm install --save-dev @babel/core @babel/cli 
+
+## trbajar con viewport
++  npm i --save-dev @storybook/addon-viewport
++ 
