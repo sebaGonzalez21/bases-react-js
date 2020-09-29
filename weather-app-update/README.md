@@ -93,4 +93,5 @@ Sandboxing que permite probar el componente sin aun haberlo integrado a la app
 
 ## Recharts mostrar graficos
 + http://recharts.org/en-US/
++ yarn add recharts
 
