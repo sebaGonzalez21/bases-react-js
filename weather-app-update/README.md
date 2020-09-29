@@ -77,6 +77,7 @@ Sandboxing que permite probar el componente sin aun haberlo integrado a la app
 + https://storybook.js.org/
 + npx -p @storybook/cli sb init comienzo al proceso de instalacion[git o consola linux,si no se produce error]
 + npm run storybook
++ yarn storybook
 
 
 ## Instalar test
@@ -89,4 +90,7 @@ Sandboxing que permite probar el componente sin aun haberlo integrado a la app
 
 ## trbajar con viewport
 +  npm i --save-dev @storybook/addon-viewport
-+ 
+
+## Recharts mostrar graficos
++ http://recharts.org/en-US/
+
