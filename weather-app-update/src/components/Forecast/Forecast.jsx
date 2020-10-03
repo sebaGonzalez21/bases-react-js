@@ -23,7 +23,7 @@ const renderForecastItem = ({hour,weekDay,state,temperature}) =>{
 const Forecast = ({forecastItemList}) => {
 	return (
 		<Grid container
-		      justify="center"
+		      justify="space-around"
 			  alignItems="center">
 				{
 					forecastItemList.map(forecast => renderForecastItem(forecast))

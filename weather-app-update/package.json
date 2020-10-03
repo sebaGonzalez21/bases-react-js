@@ -13,9 +13,13 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "recharts": "^1.8.5",
-    "sb": "^6.0.21"
+    "sb": "^6.0.21",
+    "three": "^0.121.1",
+    "vanta": "^0.5.19"
   },
   "scripts": {
     "start": "react-scripts start",
