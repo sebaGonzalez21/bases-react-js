@@ -7,11 +7,23 @@ import CityList from './../components/CityList'
 const cities = [
 	{
 		city: "Santiago",
-		country: "Chile"
+		country: "Chile",
+		countryCode: "CL"
 	},
 	{
 		city: "Buenos Aires",
-		country: "Argentina"
+		country: "Argentina",
+		countryCode: "AR"
+	},
+	{
+		city: "Bogotá",
+		country: "Colombia",
+		countryCode: "CO"
+	},
+	{
+		city: "Madrid",
+		country: "España",
+		countryCode: "ES"
 	}
 ];
 

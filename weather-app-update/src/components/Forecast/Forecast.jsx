@@ -10,7 +10,7 @@ const renderForecastItem = ({hour,weekDay,state,temperature}) =>{
 	return (
 		<Grid data-testid="forecast-item-container"
 		item key={`${weekDay}${hour}`}>
-			<ForecastItem 
+			<ForecastItem
 				hour={hour}
 				weekDay={weekDay}
 				state={state}

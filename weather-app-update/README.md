@@ -55,3 +55,14 @@ yarn add react-router-dom
 yarn add vanta
 yarn add three
 ```
+
+## Convert units grados kelvin
+```
+yarn add convert-units
+```
+
+## Skeleton
+```
+para la demora de carga 3g
+yarn add @material-ui/lab
+```
