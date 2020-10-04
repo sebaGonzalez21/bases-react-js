@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import AppBar from '@material-ui/core/AppBar'
 import IconButton from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
@@ -41,10 +40,6 @@ const AppFrame = ({children}) => {
 			  </Grid>
 		</Grid>
 	)
-}
-
-AppFrame.propTypes = {
-
 }
 
 export default AppFrame

@@ -13,6 +13,7 @@
     "convert-units": "^2.3.4",
     "fontsource-roboto": "^3.0.3",
     "init": "^0.1.2",
+    "moment": "^2.29.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",

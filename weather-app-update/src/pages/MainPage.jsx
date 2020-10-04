@@ -4,6 +4,7 @@ import AppFrame from './../components/AppFrame'
 import Paper from '@material-ui/core/Paper' //marco al final
 import CityList from './../components/CityList'
 
+
 const cities = [
 	{
 		city: "Santiago",
@@ -30,9 +31,12 @@ const cities = [
 const MainPage = props => {
 	const history = useHistory()
 
-	const onClickHandler = () =>{
+	const onClickHandler = (city,countryCode) =>{
+		console.log("city ",city);
+		console.log("countryCode ",countryCode);
 		//url que mostrara el navegador
-		history.push("/city");
+		history.push(`/city/${countryCode}/${city}`);
+
 	}
 
 	return (

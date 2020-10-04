@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+//stric mode efectos secundarios inesperados, detectar errores, ciclo de vidas inseguros
 ReactDOM.render(
   <React.StrictMode>
     <App />

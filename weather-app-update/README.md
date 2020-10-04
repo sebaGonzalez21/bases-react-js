@@ -66,3 +66,7 @@ yarn add convert-units
 para la demora de carga 3g
 yarn add @material-ui/lab
 ```
+## Moment js
+```
+yarn add moment
+```
