@@ -2,21 +2,30 @@ import {useState,useEffect} from 'react'
 import axios from 'axios'
 import { getWeatherUrl } from './../utils/urls'
 import { getAllWeather } from './../utils/transform/getAllWeather'
-const useCityList = (cities) =>{
+import { getCityCode } from './../utils/utils'
+
+const useCityList = (cities,onSetAllWeather,allWeather) =>{
 	/**
 	 * All Weather
 	 * [Santiago-Chile]: {temperature: 10, state: "sunny"}
 	 */
-	const [allWeather, setAllWeather] = useState({})
+	//const [allWeather, setAllWeather] = useState({})
 	const [error,setError] = useState(null)
 
 	//invocar las api y llenar los valores
 	useEffect(() => {
 		const setWeather = async(city,countryCode)=>{
 			try{
+
+				const propName = getCityCode(city,countryCode)
+				onSetAllWeather({ [propName]: {} })
+
 				const resp = await axios.get(getWeatherUrl({city,countryCode}))
 				const allWeatherAux = getAllWeather(resp,city,countryCode)
-				setAllWeather(allWeather => ({...allWeather,...allWeatherAux}))
+
+				//alguna funcion que lleve el estado al componente superior
+				//setAllWeather(allWeather => ({...allWeather,...allWeatherAux}))
+				onSetAllWeather(allWeatherAux)
 			}catch(err){
 				//errores que responde el server
 				if(err.response){
@@ -32,14 +41,17 @@ const useCityList = (cities) =>{
 
 		}
 		cities.forEach(({city,countryCode}) => {
-			//invoca la funcion n veces
-			setWeather(city,countryCode)
+			if(!allWeather[getCityCode(city,countryCode)]){
+				//invoca la funcion n veces
+				setWeather(city,countryCode)
+			}
 
 		});
 		
-	}, [cities])//cuando cities se modifique,volver a ejecutarlo
+	}, [cities,onSetAllWeather,allWeather])//cuando cities se modifique,volver a ejecutarlo // cuando se monte el componente
+	//componentes resilientes
 
-	return { allWeather , error , setError }
+	return {  error , setError }
 }
 
 export default useCityList

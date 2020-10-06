@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper' //marco al final
 import CityList from './../components/CityList'
 import { getCities } from '../utils/serviceCities'
 
-const MainPage = props => {
+const MainPage = ({actions,data}) => {
 	const history = useHistory()
 
 	const onClickHandler = (city,countryCode) =>{
@@ -21,6 +21,8 @@ const MainPage = props => {
 		<AppFrame>
 			<Paper>
 				<CityList 
+					data={data}
+					actions={actions}
 					cities={getCities()}
 					onClickCity={onClickHandler}/>
 			</Paper>

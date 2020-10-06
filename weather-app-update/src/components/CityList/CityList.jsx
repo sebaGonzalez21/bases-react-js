@@ -45,10 +45,11 @@ const renderCityAndCountry = eventOnClickCity => (cityAndCountry,weather) =>{
 
 //cities: array y cada item tiene una ciudad pero ademas un country
 //ul: tag para listas html no ordenadas
-const CityList = ({cities,onClickCity}) => {
-
+const CityList = ({cities,onClickCity,actions,data}) => {
+	const { allWeather} = data
+	const { onSetAllWeather } = actions
 	//use efect personalizado
-	const {allWeather,error,setError} = useCityList(cities);
+	const {error,setError} = useCityList(cities,onSetAllWeather,allWeather);
 
 	//logica de renderizado mas pequeña
 	return (

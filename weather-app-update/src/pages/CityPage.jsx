@@ -12,12 +12,22 @@ import useCityList from '../hooks/useCityList'
 import { getCityCode } from './../utils/utils'
 import {getCountryNameByCountryCode} from './../utils/serviceCities'
 
-const CityPage = () => {
-
-	const {city,countryCode,data,forecastItemList} = useCityPage()//use memo
+const CityPage = ({actions,data}) => {
+	const { allWeather, allChartData, allForecastItemList} = data
+	const { onSetAllWeather,onSetChartData, onSetForecastItemList} = actions
+	const {city,countryCode} = useCityPage(allChartData, allForecastItemList,onSetChartData,onSetForecastItemList)//use memo
+	
 	const cities = useMemo(() =>( [{city ,countryCode}]), [city,countryCode]);//cuando cambie city and country code retornar un nuevo array
-	const { allWeather } = useCityList(cities)
-	const weather = allWeather[getCityCode(city ,countryCode)]
+	
+	useCityList(cities,onSetAllWeather,allWeather)
+	
+	const cityCode = getCityCode(city ,countryCode)
+
+	const weather = allWeather[cityCode]
+	const chartData = allChartData[cityCode]
+	const forecastItemList = allForecastItemList[cityCode]
+	
+
 	const country = getCountryNameByCountryCode(countryCode)
 	const state = weather && weather.state
 	const temperature = weather && weather.temperature
@@ -47,12 +57,12 @@ const CityPage = () => {
 				</Grid>
 				<Grid item>
 					{
-						!data && !forecastItemList && <LinearProgress />
+						!chartData && !forecastItemList && <LinearProgress />
 					}
 				</Grid>
 				<Grid item>
 					{
-						data && <ForecastChart data={data}/>
+						chartData && <ForecastChart data={chartData}/>
 					}
 				</Grid>
 				<Grid item>
