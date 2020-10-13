@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 
-class ErrorBoundary extends Component{
+class ErrorBoundary extends PureComponent{
 
 	//instancia de inicializacion de la clase en memoria
 	constructor(props){
@@ -20,7 +20,7 @@ class ErrorBoundary extends Component{
 	}
 
 	componentDidCatch(error,errorInfo){
-		console.log("errorInfo ",errorInfo											);
+		console.log("errorInfo ",errorInfo)
 	}
 
 	render(){

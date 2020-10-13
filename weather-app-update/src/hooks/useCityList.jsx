@@ -4,7 +4,7 @@ import { getWeatherUrl } from './../utils/urls'
 import { getAllWeather } from './../utils/transform/getAllWeather'
 import { getCityCode } from './../utils/utils'
 
-const useCityList = (cities,onSetAllWeather,allWeather) =>{
+const useCityList = (cities,actions,allWeather) =>{
 	/**
 	 * All Weather
 	 * [Santiago-Chile]: {temperature: 10, state: "sunny"}
@@ -18,14 +18,16 @@ const useCityList = (cities,onSetAllWeather,allWeather) =>{
 			try{
 
 				const propName = getCityCode(city,countryCode)
-				onSetAllWeather({ [propName]: {} })
+				//onSetAllWeather({ [propName]: {} })
+				actions({type: 'SET_ALL_WEATHER', payload: { [propName]: {} } })
 
 				const resp = await axios.get(getWeatherUrl({city,countryCode}))
 				const allWeatherAux = getAllWeather(resp,city,countryCode)
 
 				//alguna funcion que lleve el estado al componente superior
 				//setAllWeather(allWeather => ({...allWeather,...allWeatherAux}))
-				onSetAllWeather(allWeatherAux)
+				//onSetAllWeather(allWeatherAux)
+				actions({type: 'SET_ALL_WEATHER', payload: allWeatherAux })
 			}catch(err){
 				//errores que responde el server
 				if(err.response){
@@ -48,7 +50,7 @@ const useCityList = (cities,onSetAllWeather,allWeather) =>{
 
 		});
 		
-	}, [cities,onSetAllWeather,allWeather])//cuando cities se modifique,volver a ejecutarlo // cuando se monte el componente
+	}, [cities,actions,allWeather])//cuando cities se modifique,volver a ejecutarlo // cuando se monte el componente
 	//componentes resilientes
 
 	return {  error , setError }

@@ -6,7 +6,7 @@ import getChartData from './../utils/transform/getChartData'
 import getForecastItemListAux from '../utils/transform/getForecastItemListAux'
 import { getCityCode } from '../utils/utils'
 
-export const useCityPage = (allChartData, allForecastItemList,onSetChartData,onSetForecastItemList) =>{
+export const useCityPage = (allChartData, allForecastItemList,actions) =>{
 	//const [data, setData] = useState(null)
 	//const [forecastItemList,setForecastItemList] = useState(null)
 	const {city,countryCode} = useParams();
@@ -23,11 +23,12 @@ export const useCityPage = (allChartData, allForecastItemList,onSetChartData,onS
 
 			const dataAux = getChartData(data)
 
-			onSetChartData({[cityCode]: dataAux})
-
+			//onSetChartData({[cityCode]: dataAux})
+			actions({type: 'SET_CHART_DATA', payload: {[cityCode]: dataAux} })
 			const foreCastItemListAux = getForecastItemListAux(data)
-
-		    onSetForecastItemList({[cityCode]: foreCastItemListAux})
+			
+			//onSetForecastItemList({[cityCode]: foreCastItemListAux})
+			actions({type: 'SET_FORECAST_ITEM_LIST',payload: {[cityCode]: foreCastItemListAux} })
 		 }catch(err){
 			 console.log(err)
 		 }
@@ -38,7 +39,7 @@ export const useCityPage = (allChartData, allForecastItemList,onSetChartData,onS
 			getData();
 		}
 		  
-	}, [city,countryCode,onSetChartData,onSetForecastItemList,allChartData, allForecastItemList])
+	}, [city,countryCode,actions,allChartData, allForecastItemList])
 
 	return {city,countryCode}
 }

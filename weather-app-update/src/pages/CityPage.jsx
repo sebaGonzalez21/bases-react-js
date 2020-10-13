@@ -11,15 +11,18 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import useCityList from '../hooks/useCityList'
 import { getCityCode } from './../utils/utils'
 import {getCountryNameByCountryCode} from './../utils/serviceCities'
+import { useWeatherDispatchContext, useWeatherStateContext } from '../WeatherContext'
 
-const CityPage = ({actions,data}) => {
+const CityPage = () => {
+	const data = useWeatherStateContext()
+	const actions = useWeatherDispatchContext()
 	const { allWeather, allChartData, allForecastItemList} = data
-	const { onSetAllWeather,onSetChartData, onSetForecastItemList} = actions
-	const {city,countryCode} = useCityPage(allChartData, allForecastItemList,onSetChartData,onSetForecastItemList)//use memo
+	//const { onSetAllWeather,onSetChartData, onSetForecastItemList} = actions
+	const {city,countryCode} = useCityPage(allChartData, allForecastItemList,actions)//use memo
 	
 	const cities = useMemo(() =>( [{city ,countryCode}]), [city,countryCode]);//cuando cambie city and country code retornar un nuevo array
 	
-	useCityList(cities,onSetAllWeather,allWeather)
+	useCityList(cities,actions,allWeather)
 	
 	const cityCode = getCityCode(city ,countryCode)
 

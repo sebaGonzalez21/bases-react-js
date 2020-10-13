@@ -70,3 +70,17 @@ yarn add @material-ui/lab
 ```
 yarn add moment
 ```
+### Addons controls 
+```
+npm i -D @storybook/addon-controls
+```
+### Instalacion de Typescript
+```
+npx create-react-app my-app --typescript
+
+yarn creat-react-app my-app --typescript
+```
+## Al agregar TS a un proyecto creado con cra
+```
+yarn add typescript @types/node @types/react @types/react-dom @types/jest
+```

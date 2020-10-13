@@ -8,17 +8,23 @@ import CityInfo from '../CityInfo'
 import Weather from '../Weather'
 import useCityList from './../../hooks/useCityList'
 import {getCityCode} from './../../utils/utils'
+import { useWeatherDispatchContext, useWeatherStateContext } from '../../WeatherContext'
 
-//li: item en html para colcar un item de la lista
-//render city and country se va a convertir en una funcion que retorna otra funcion
-const renderCityAndCountry = eventOnClickCity => (cityAndCountry,weather) =>{
-	const {city,countryCode,country} = cityAndCountry;
-	//const {temperature,state} = weather;
+/*
+const areEqual = (prev,next)=>{
+	debugger
+	console.log("city", prev.city === next.city);
+	console.log("countryCode",prev.countryCode === next.countryCode);
+	console.log("country",prev.country === next.country);
+	console.log("eventOnClickCity",prev.eventOnClickCity === next.eventOnClickCity);
+	console.log("weather",prev.weather === next.weather);
+	return false
+}*/
 
+const CityListItem = React.memo(function CityListItem({city,countryCode,country,eventOnClickCity,weather}){
 	return (
 		<ListItem 
 			button
-			key={getCityCode(city,countryCode)}
 			onClick={()=>eventOnClickCity(city,countryCode)}>
 			<Grid container
 				  justify="center"
@@ -39,17 +45,27 @@ const renderCityAndCountry = eventOnClickCity => (cityAndCountry,weather) =>{
 			
 		</ListItem>
 	)
+})
+//,areEqual
+
+//li: item en html para colcar un item de la lista
+//render city and country se va a convertir en una funcion que retorna otra funcion
+const renderCityAndCountry = eventOnClickCity => (cityAndCountry,weather) =>{
+	const {city,countryCode} = cityAndCountry
+	return <CityListItem key={getCityCode(city,countryCode)} eventOnClickCity={eventOnClickCity} weather={weather} {...cityAndCountry}/>
 }
 
 
 
 //cities: array y cada item tiene una ciudad pero ademas un country
 //ul: tag para listas html no ordenadas
-const CityList = ({cities,onClickCity,actions,data}) => {
+const CityList = ({cities,onClickCity}) => {
+	const actions = useWeatherDispatchContext()
+	const data = useWeatherStateContext()
 	const { allWeather} = data
-	const { onSetAllWeather } = actions
+	//const { onSetAllWeather } = actions
 	//use efect personalizado
-	const {error,setError} = useCityList(cities,onSetAllWeather,allWeather);
+	const {error,setError} = useCityList(cities,actions,allWeather);
 
 	//logica de renderizado mas pequeña
 	return (
@@ -77,7 +93,9 @@ CityList.propTypes = {
 	onClickCity: PropTypes.func,
 }
 
-export default CityList
+//CityList.displayName = "CitySuperList"
+
+export default React.memo(CityList)
 
 
 			/*
