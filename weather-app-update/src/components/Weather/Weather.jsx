@@ -1,23 +1,40 @@
-import React from 'react';
+import React,{useMemo} from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
+import Skeleton from '@material-ui/lab/Skeleton'
 import {IconContext} from 'react-icons';
+import Grid from '@material-ui/core/Grid'
 import IconState,{validValues} from '../IconState'
 
 const Weather = ({temperature,state}) => {
+	const iconContextSize = useMemo(() =>({size:'6em'}),[])
 	return (
-		<div>
-			<IconContext.Provider value={{size:'4em'}}> 
-				<IconState state={state}/>
+		<Grid container item
+			direction="row"
+			justify="center"
+			alignItems="center"
+			spacing={1}>
+			<IconContext.Provider value={iconContextSize}> 
+				{
+					state ?
+					<IconState state={state}/>
+					: 
+					<Skeleton variant="circle" height={80} width={80}></Skeleton>
+				}
 			</IconContext.Provider>
-			<Typography display="inline" variant="h3">{temperature}</Typography>
-		</div>
+			{
+				temperature ?
+				<Typography display="inline" variant="h2">{temperature}</Typography>
+				:
+				<Skeleton variant="rect" height={80} width={80}></Skeleton>
+			}
+		</Grid>
 	)
 }
 
 Weather.propTypes = {
-	temperature: PropTypes.number.isRequired,
-	state: PropTypes.oneOf(validValues).isRequired
+	temperature: PropTypes.number,
+	state: PropTypes.oneOf(validValues)
 }
 
 export default Weather
